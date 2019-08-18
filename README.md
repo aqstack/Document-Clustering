@@ -4,11 +4,11 @@ Clustering is the task of grouping a set of similar objects than to those in oth
 Document clustering (or text clustering) is the application of cluster analysis to textual documents. It has applications in automatic document organization, topic modeling, keyword extraction, and information retrieval.
 
 The objectives of this assignment were as described below:
-• Implement the Bisecting K-Means algorithm.
-• Deal with text data (news records) in document-term sparse matrix format.
-• Design a proximity function for text data.
-• Think about the Curse of Dimensionality.
-• Think about best metrics for evaluating clustering solutions.
+* Implement the Bisecting K-Means algorithm.
+* Deal with text data (news records) in document-term sparse matrix format.
+* Design a proximity function for text data.
+* Think about the Curse of Dimensionality.
+* Think about best metrics for evaluating clustering solutions.
 
 ### Approach:
 
@@ -21,14 +21,14 @@ The objectives of this assignment were as described below:
 * **K-Means Algorithm:** The Κ-means clustering algorithm uses iterative refinement to produce a result. The algorithm inputs are the number of clusters Κ and the data set. The data set is a collection of features for each data point. The algorithm starts with initial estimates for the Κ centroids which then iterates between two steps, Data Assignment and Centroid update. In data assignment step, each data point is assigned to its nearest centroid, based on the squared Euclidean distance measure. In every iteration, the centroids are recomputed by taking the mean of all the data points assigned to that centroid’s cluster. The algorithm iterated until a stopping condition is met, that is, no data points change clusters, the sum of the distances is minimized, or a hard-coded number of iterations is reached. The algorithm is guaranteed to converge to a result. The result may not be necessarily the best possible outcome which means assessing more than one run of the algorithm with randomized initial centroids may generate a better outcome.
 
 * **Bisecting K-Means Algorithm:** Like any algorithm, there are disadvantages to the k-means as well. Firstly, there are nested loops, which means it is quadratic complex. Moreover, the distance metric used within the nested loop is done unconditionally, arising tractability concerns. Lastly, the algorithm has the tendency of collapsing on a local minima instead of a global minima due to poor initialization. A potential remedy for this, is to do a post-processing of the created clustered model, where the Cluster to be split is picked on which Cluster has the highest sum of squared errors (SSE). This will hopefully yield for an SSE between the two resultant child clusters that is less than the SSE for their parent cluster. This forms the basis for the algorithm known as the Bisecting K-Means algorithm(pseudocode) which is shown as below. 
-    • Pick a cluster to split. 
-    • Find 2 sub-clusters using the basic k-Means algorithm. 
-    • Repeat step 2, the bisecting step, for ITER times and take the split that produces lowest SSE. 
-    • Repeat steps 1, 2 and 3 until the desired number of clusters is reached.
+    * Pick a cluster to split. 
+    * Find 2 sub-clusters using the basic k-Means algorithm. 
+    * Repeat step 2, the bisecting step, for ITER times and take the split that produces lowest SSE. 
+    * Repeat steps 1, 2 and 3 until the desired number of clusters is reached.
     
 * **Silhouette Score:** Silhouette score metric is used to study the separation distance between the resulting clusters. The silhouette plot displays a measure of how close each point in one cluster is to points in the neighboring clusters and therefore, provides a way to assess number of clusters visually. Same was plotted on the y-axis with values for k on the x-axis increasing from 3 to 21 in steps of 2 for the given dataset. The Silhouette Coefficient is defined for each sample and is composed of two scores:
-    • The mean distance between a sample and all other points in the same cluster.
-    • The mean distance between a sample and all other points in the nearest cluster.
+    * The mean distance between a sample and all other points in the same cluster.
+    * The mean distance between a sample and all other points in the nearest cluster.
 
 ### Conclusion:
 
